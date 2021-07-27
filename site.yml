@@ -1,7 +1,10 @@
 ---
-- name: Call 3 playbooks
+- name: Deploy, configure, and populate all roles
   hosts: all
+  become: true
 
-- import_playbook: provision_database_tier.yml
-- import_playbook: provision_app_tier.yml
-- import_playbook: provision_load_balancer_tier.yml
+  roles:
+
+    - postgres
+    - app
+    - haproxy
